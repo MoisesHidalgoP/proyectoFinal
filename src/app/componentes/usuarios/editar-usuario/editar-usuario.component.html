@@ -1,0 +1,54 @@
+<html>
+<br/>
+<div class="container">
+  <div class="box">
+    <div class="text-center">
+      <h1>Editar usuario</h1>
+    </div>
+    <form [formGroup]="datosUsuario" class="form">
+
+      <div>
+        <label for="nombre" class="form-label">Nombre y apellidos:</label>
+        <input type="text" class="form-control" formControlName="nombreCompleto" placeholder="Nombre completo" [class.is-invalid]="nombreNoValido">
+        <small *ngIf="nombreNoValido" class="text-danger">El nombre tiene que tener mínimo 5 letras y como máximo 50.
+          Este campo tampoco admite números ni carácteres raros.
+        </small>
+      </div>
+     
+
+        <div class="form-group">
+          <label for="email" class="form-label">Email:</label>
+          <input type="text" id="email" formControlName="email" class="form-control" >
+        </div>
+      
+        <div class="form-group">
+          <label for="rol" class="form-label">Rol:</label>
+          <input type="text" id="rol" formControlName="rol" class="form-control" [class.is-invalid]="rolNoValido">
+          <small *ngIf="rolNoValido" class="form-error">Este campo sólo admite los roles 1 (usuario) y 0 (administrador).
+          </small>
+        </div>
+
+        <div>
+          <label for="movil" class="form-label">Movil:</label>
+          <input type="number" class="form-control" formControlName="movil" placeholder="Movil" [class.is-invalid]="movilNoValido">
+          <small *ngIf="movilNoValido" class="text-danger">El campo móvil tiene que tener 9 dígitos
+          </small>
+        </div>
+       
+      
+        <div class="form-group">
+          <button class="btn btn-primary m-2 black-btn" (click)="actualizarEstado()">Actualizar estado</button>
+        </div>
+      
+        <div>    
+          <input type="button" class="btn btn-primary m-2 black-btn" (click)="volver()" name="Volver" value="Volver">
+        </div>
+      
+     
+      
+    </form>
+  </div>
+</div>
+
+</html>
+

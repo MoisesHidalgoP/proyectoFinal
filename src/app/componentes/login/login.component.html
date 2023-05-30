@@ -1,0 +1,40 @@
+<form [formGroup]="formReg" (ngSubmit)="onSubmit()" class="bg-light d-flex justify-content-center align-items-center vh-100">
+  <div class="bg-white p-5 rounded-5 text-secondary shadow" style="width: 25rem">
+    <div class="d-flex justify-content-center">
+      <img src="/assets/usuario.png" alt="login-icon" style="height: 7rem" />
+    </div>
+    <div class="text-center fs-1 fw-bold">Login</div>
+    <div class="input-group mt-4">
+      <div class="input-group-text bg-light">
+        <img src="/assets/correo.png" alt="candado" style="height: 1rem" />
+      </div>
+      <input type="email" class="form-control" formControlName="email" placeholder="Email">
+    </div>
+    <div class="input-group mt-1">
+      <div class="input-group-text bg-light">
+        <img src="/assets/candado.png" alt="candado.png" style="height: 1rem" />
+      </div>
+      <input type="password" class="form-control" formControlName="password" placeholder="Password">
+    </div>
+    <br/>
+    <div>
+      <button type="submit" class="btn btn-secondary btn-sm" value="Enviar">Enviar</button>
+    </div>
+    <br/>
+    <div>
+      <button type="submit" class="btn btn-secondary btn-sm" a routerLink="/register" value="Enviar">CREAR CUENTA</button>
+    </div>
+    <br/>
+    <div>
+      <a routerLink="/recuperarContraseña">¿Ha olvidado su contraseña?</a>
+    </div>
+  </div>
+
+  <div class="error-container" *ngIf="errorVisible">
+    <div class="error-content">
+      <h3>Error de inicio de sesión</h3>
+      <p>El email o la contraseña son incorrectos.</p>
+      <button class="btn btn-danger" (click)="cerrarError()">Cerrar</button>
+    </div>
+  </div>
+</form>

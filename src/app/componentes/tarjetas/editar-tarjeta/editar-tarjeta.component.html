@@ -1,0 +1,51 @@
+<br/>
+<br/>
+<html>
+    <div class="form-container">
+        <h1 class="form-title">Editar nuevo jugador para la tabla de tarjetas</h1>
+        <form [formGroup]="datosTarjeta" class="form">
+          <div class="form-group">
+            <label for="nombre" class="form-label">Nombre:</label>
+            <input type="text" id="nombre" formControlName="nombre" [class.is-invalid]="nombreNoValido" class="form-control">
+            <small *ngIf="nombreNoValido" class="form-error">El nombre tiene que tener mínimo 5 letras y como máximo 40.
+              Este campo tampoco admite números ni carácteres raros.
+            </small>
+          </div>
+    
+          <div class="form-group">
+            <label for="equipo" class="form-label">Equipo:</label>
+            <input type="text" id="equipo" formControlName="equipo" [class.is-invalid]="equipoNoValido" class="form-control">
+            <small *ngIf="equipoNoValido" class="form-error">El nombre del equipo tiene que tener 5 letras y 40 como máximo.
+              Este campo tampoco admite números ni carácteres raros.
+            </small>
+          </div>
+    
+          <div class="form-group">
+            <label for="tarjetasAmarillas" class="form-label">Tarjetas Amarillas:</label>
+            <input type="number" id="tarjetasAmarillas" formControlName="tarjetasAmarillas" [class.is-invalid]="tarjetasAmarillasNoValido" class="form-control">
+            <small *ngIf="tarjetasAmarillasNoValido" class="form-error">El campo tarjetas amarillas no puede estar vacío y tiene que tener cómo mínimo 0 tarjeta y máximo 100 tarjetas
+            </small>
+          </div>
+    
+          <div class="form-group">
+            <label for="tarjetasRojas" class="form-label">Tarjetas Rojas:</label>
+            <input type="number" id="tarjetasRojas" formControlName="tarjetasRojas" [class.is-invalid]="tarjetasRojasNoValido" class="form-control">
+            <small *ngIf="tarjetasRojasNoValido" class="form-error">El campo tarjetas rojas no puede estar vacío y tiene que tener cómo mínimo 0 tarjeta y máximo 100 tarjetas</small>
+          </div>
+    
+          <div class="form-group">
+            <label for="totalTarjetas" class="form-label">Total Tarjetas:</label>
+            <input type="number" id="totalTarjetas" formControlName="totalTarjetas" [class.is-invalid]="totalTarjetasNoValido" class="form-control">
+            <small *ngIf="totalTarjetasNoValido" class="form-error">El campo total tarjetas no puede estar vacío y tiene que tener cómo mínimo 0 tarjetas y máximo 200 tarjetas</small>
+          </div>
+    
+          <div class="form-group">
+            <button class="form-button" (click)="actualizarEstado()">Actualizar</button>
+          </div>
+    
+          <div>
+            <input type="button" class="form-button" (click)="volver()" name="Volver" value="Volver">
+          </div>
+        </form>
+      </div>
+    </html>

@@ -1,0 +1,75 @@
+<html>
+<br/>
+<div class="text-center">
+  <h1>Editar equipo</h1>
+</div>
+<form [formGroup]="datosClasificacion" class="form">
+
+  <div class="form-group">
+    <label for="nombre" class="form-label">Nombre:</label>
+    <input type="text" id="nombre" formControlName="nombre" [class.is-invalid]="nombreNoValido" class="form-control" >
+    <small *ngIf="nombreNoValido" class="text-danger">El nombre tiene que tener mínimo 5 letras y como máximo 40.
+      Este campo tampoco admite números ni carácteres raros.
+    </small>
+  </div>
+
+  <div class="form-group">
+    <label for="img" class="form-label">Url del escudo:</label>
+    <input type="text" id="img" formControlName="img" [class.is-invalid]="imgNoValido" class="form-control" >
+    <small  *ngIf="imgNoValido" class="text-danger">La url del escudo tiene que tener mínimo 5 letras y 70 como máximo.
+     
+    </small>
+  </div>
+
+  <div class="form-group">
+    <label for="partidosJugados" class="form-label">Total de partidos:</label>
+    <input type="number" id="partidosJugados" formControlName="partidosJugados" [class.is-invalid]="partidosJugadosNoValido" class="form-control" >
+    <small  *ngIf="partidosJugadosNoValido" class="text-danger">El campo partidos jugados tiene que tener mínimo un número y máximos tres</small>
+  </div>
+
+  <div class="form-group">
+    <label for="partidosGanados" class="form-label">Partidos ganados:</label>
+    <input type="text" id="partidosGanados" formControlName="partidosGanados" [class.is-invalid]="partidosGanadosNoValido" class="form-control" >
+    <small  *ngIf="partidosGanadosNoValido" class="text-danger">El campo partidos ganados tiene que tener mínimo un número y máximos tres</small>
+  </div>
+
+  <div class="form-group">
+    <label for="partidosEmpatados" class="form-label">Partidos empatados:</label>
+    <input type="number" id="partidosEmpatados" formControlName="partidosEmpatados" [class.is-invalid]="partidosEmpatadosNoValido" class="form-control" >
+    <small  *ngIf="partidosEmpatadosNoValido" class="text-danger">El campo partidos empatados tiene que tener mínimo un número y máximos tres</small>
+  </div>
+
+  <div class="form-group">
+    <label for="partidosPerdidos" class="form-label">Partidos perdidos:</label>
+    <input type="number" id="partidosPerdidos" formControlName="partidosPerdidos" [class.is-invalid]="partidosPerdidosNoValido" class="form-control" >
+    <small  *ngIf="partidosPerdidosNoValido" class="text-danger">El campo partidos perdidos tiene que tener mínimo un número y máximos tres</small>
+  </div>
+
+  <div class="form-group">
+    <label for="golesFavor" class="form-label">Goles a favor:</label>
+    <input type="number" id="golesFavor" formControlName="golesFavor" [class.is-invalid]="golesFavorNoValido" class="form-control" >
+    <small  *ngIf="golesFavorNoValido" class="text-danger">El campo goles a favor tiene que tener mínimo un número</small>
+  </div>
+
+  <div class="form-group">
+    <label for="golesContra" class="form-label">Goles en contra:</label>
+    <input type="number" id="golesContra" formControlName="golesContra" [class.is-invalid]="golesContraNoValido" class="form-control" >
+    <small  *ngIf="golesContraNoValido" class="text-danger">El campo goles en contra tiene que tener mínimo un número y máximos tres</small>
+  </div>
+
+  <div class="form-group">
+    <label for="puntos" class="form-label">Puntos:</label>
+    <input type="number" id="puntos" formControlName="puntos" [class.is-invalid]="puntosNoValido" class="form-control" >
+    <small  *ngIf="puntosNoValido" class="text-danger">El campo de puntos tiene que tener mínimo un número y máximos tres</small>
+  </div>
+
+  <div class="form-group">
+    <button class="btn btn-primary m-2 black-btn" (click)="actualizarEstado()">Actualizar</button>
+  </div>
+  <div>    
+    <input type="button" class="btn btn-primary m-2 black-btn" (click)="volver()" name="Volver" value="Volver">
+  </div>
+
+</form>
+
+</html>

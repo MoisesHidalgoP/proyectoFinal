@@ -1,0 +1,66 @@
+<html>
+    <body>
+        <br/>
+       
+        <p class="parrafo-estilizado">Datos de los equipos de la temporada 2022/2023</p>
+        <form (submit)="buscar()">
+            <input type="text" [(ngModel)]="nombreBusqueda" name="nombreBusqueda" placeholder="Buscar por nombre">
+            <button type="submit">Buscar</button>
+          </form>
+          <div class="resultados-caja" *ngFor="let equipo of resultadosBusqueda">
+             <img
+              src="{{equipo.data.img}}"
+              alt="barca.png"
+              style="height: 5rem"
+            />
+            <h4>Nombre: {{equipo.data.nombre}}</h4>
+            <p>Estadio: {{equipo.data.estadio}}</p>
+            <p>Entrenador: {{equipo.data.entrenador}}</p>
+            <p>Fundado: {{equipo.data.anio}}</p>
+            <p>Número de socios: {{equipo.data.numSocio}}</p>
+          </div>          
+        <br/>
+        <button (click)="volver()" style="background-color: #000000; color: white; font-size: 16px; border: none; padding: 10px 20px; cursor: pointer; border-radius: 5px;">Volver</button>
+        <br/>
+        <br/>
+        <button *ngIf="+rol===0" type="submit" style="background-color: #000000; color: white; font-size: 16px; border: none; padding: 10px 20px; cursor: pointer; border-radius: 5px;" a routerLink="/detallEquipo" value="Enviar">Crear nuevo equipo</button>
+        <br/>
+        <br/>
+        <ul *ngFor="let equipo of listaEquipos" class="list-group horizontal-list"  >
+            <br>
+            <div class="contenedor">
+                
+                <li  class="list-group-item inline-item"  >
+                    <img
+                    src="{{equipo.data.img}}"
+                    alt="barca.png"
+                    style="height: 10rem"
+                  />
+                   
+                  <br/>
+                    Nombre: {{equipo.data.nombre}}
+                    <br/> 
+                    Estadio: {{equipo.data.estadio}}
+                    <br/>
+                    Entrenador: {{equipo.data.entrenador}}
+                    <br/>
+                    Fundado: {{equipo.data.anio}}
+                    <br/>
+                    Número de socios: {{equipo.data.numSocio}}
+                    <br/>
+                    <br/>
+                    <button *ngIf="+rol===0" (click)="borrarEquipo(equipo.id)"  style="background-color: #000000; color: white; font-size: 16px; border: none; padding: 10px 20px; cursor: pointer; border-radius: 5px;">Borrar equipo</button>
+                    <br/>
+                    <br/>
+                    <button *ngIf="+rol===0" (click)="editarEquipo(equipo.id)"  style="background-color: #000000; color: white; font-size: 16px; border: none; padding: 10px 20px; cursor: pointer; border-radius: 5px;">Editar equipo</button>
+       
+                </li>
+            </div>
+        </ul>
+
+
+       
+    </body>
+    
+</html>
+

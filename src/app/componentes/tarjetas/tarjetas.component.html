@@ -1,0 +1,29 @@
+<br/>
+<br/>
+
+<div class="container">
+    <h2 class="titulo">Top 20 máximos jugadores con tarjetas 2022/2023</h2>
+    <div style="text-align: center;">
+        <button *ngIf="+rol===0" type="submit" style="background-color: #000000; color: white; font-size: 16px; border: none; padding: 10px 20px; cursor: pointer; border-radius: 5px; margin-right: 10px;" a routerLink="/nuevaTarjeta" value="Enviar">Crear nuevo jugador en la tabla tarjetas</button>
+        <button (click)="volver()" style="background-color: #000000; color: white; font-size: 16px; border: none; padding: 10px 20px; cursor: pointer; border-radius: 5px;">Volver</button>
+    </div>
+    <br/>
+    <ul *ngFor="let tarjetas of listaTarjetas; let i = index" class="list-group custom-list">
+        <li class="list-group-item custom-list-item">
+            <div class="nombre">
+                <span class="number">{{ i + contador }}</span>
+                {{ tarjetas.data.nombre }}
+            </div>
+            <div class="detalle">
+                <span class="etiqueta">Equipo:</span> {{ tarjetas.data.equipo }} |
+                <span class="etiqueta">Tarjetas Amarillas:</span> {{ tarjetas.data.tarjetasAmarillas }} |
+                <span class="etiqueta">Tarjetas Rojas:</span> {{ tarjetas.data.tarjetasRojas }} |
+                <span class="etiqueta">Total Tarjetas:</span> {{ tarjetas.data.totalTarjetas }}
+                <div class="botones-container">
+                    <button *ngIf="+rol===0" (click)="editarTarjeta(tarjetas.id)"  style="background-color: #000000; color: white; font-size: 16px; border: none; padding: 5px 10px; cursor: pointer; border-radius: 5px; margin-right: 20px;">Editar jugador</button>
+                    <button *ngIf="+rol===0" (click)="borrarTarjeta(tarjetas.id)"  style="background-color: #000000; color: white; font-size: 16px; border: none; padding: 5px 10px; cursor: pointer; border-radius: 5px;">Borrar jugador</button>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>

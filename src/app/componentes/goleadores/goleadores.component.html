@@ -1,0 +1,29 @@
+<br/>
+<br/>
+
+<div class="container">
+    <h2 class="titulo">Top 20 máximos goleadores de la temporada 2022/2023</h2>
+    <div style="text-align: center;">
+        <button *ngIf="+rol===0" type="submit" style="background-color: #000000; color: white; font-size: 16px; border: none; padding: 10px 20px; cursor: pointer; border-radius: 5px; margin-right: 10px;" a routerLink="/nuevoJugador" value="Enviar">Crear nuevo goleador</button>
+        <button (click)="volver()" style="background-color: #000000; color: white; font-size: 16px; border: none; padding: 10px 20px; cursor: pointer; border-radius: 5px;">Volver</button>
+    </div>
+    <br/>
+    <ul *ngFor="let goleadores of listaGoleadores; let i = index" class="list-group custom-list">
+        <li class="list-group-item custom-list-item">
+            <div class="nombre">
+                <span class="number">{{ i + contador }}</span>
+                {{ goleadores.data.nombre }}
+            </div>
+            <div class="detalle">
+                <span class="etiqueta">Equipo:</span> {{ goleadores.data.equipo }} |
+                <span class="etiqueta">País:</span> {{ goleadores.data.nacionalidad }} |
+                <span class="etiqueta">Edad:</span> {{ goleadores.data.edad }} |
+                <span class="etiqueta">Goles:</span> {{ goleadores.data.gol }}
+                <div class="botones-container">
+                    <button *ngIf="+rol===0" (click)="editarGoleador(goleadores.id)"  style="background-color: #000000; color: white; font-size: 16px; border: none; padding: 5px 10px; cursor: pointer; border-radius: 5px; margin-right: 20px;">Editar jugador</button>
+                    <button *ngIf="+rol===0" (click)="borrarGoleador(goleadores.id)"  style="background-color: #000000; color: white; font-size: 16px; border: none; padding: 5px 10px; cursor: pointer; border-radius: 5px;">Borrar jugador</button>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>

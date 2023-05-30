@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "proyectofinal-b8363": {
+      "hosting": {
+        "proyectoFinalMhp": [
+          "proyectofinal-b8363"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "proyectofinal-b8363"
+  }
+}

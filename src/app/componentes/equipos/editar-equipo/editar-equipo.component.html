@@ -1,0 +1,61 @@
+<html>
+<br/>
+<div class="text-center">
+  <h1>Editar equipo</h1>
+</div>
+<form [formGroup]="datosEquipo" class="form">
+
+  <div class="form-group">
+    <label for="nombre" class="form-label">Nombre:</label>
+    <input type="text" id="nombre" formControlName="nombre" [class.is-invalid]="nombreNoValido" class="form-control" >
+    <small *ngIf="nombreNoValido" class="text-danger">El nombre tiene que tener mínimo 5 letras y como máximo 40.
+      Este campo tampoco admite números ni carácteres raros.
+    </small>
+  </div>
+
+  <div class="form-group">
+    <label for="img" class="form-label">Url del escudo:</label>
+    <input type="text" id="img" formControlName="img" [class.is-invalid]="imgNoValido" class="form-control" >
+    <small  *ngIf="imgNoValido" class="text-danger">La url del escudo tiene que tener mínimo 5 letras y 70 como máximo.
+     
+    </small>
+  </div>
+
+  <div class="form-group">
+    <label for="entrenador" class="form-label">Entrenador:</label>
+    <input type="text" id="entrenador" formControlName="entrenador" [class.is-invalid]="entrenadorNoValido" class="form-control" >
+    <small  *ngIf="entrenadorNoValido" class="text-danger">El nombre del entrenador tiene que tener mínimo 5 letras y como máximo 40.
+      Este campo tampoco admite números ni carácteres raros.
+    </small>
+  </div>
+
+  <div class="form-group">
+    <label for="estadio" class="form-label">Estadio:</label>
+    <input type="text" id="estadio" formControlName="estadio" [class.is-invalid]="estadioNoValido" class="form-control" >
+    <small *ngIf="estadioNoValido"class="text-danger">El nombre del estadio tiene que tener mínimo 5 letras y como máximo 40.
+      Este campo tampoco admite números ni carácteres raros.
+    </small>
+  </div>
+
+  <div class="form-group">
+    <label for="anio" class="form-label">Año:</label>
+    <input type="number" id="anio" formControlName="anio" [class.is-invalid]="anioNoValido" class="form-control" >
+    <small  *ngIf="anioNoValido" class="text-danger">El año que se funda el club tiene que tener mínimo 4 números y como máximo 6</small>
+  </div>
+
+  <div class="form-group">
+    <label for="numSocio" class="form-label">Abonados:</label>
+    <input type="number" id="numSocio" formControlName="numSocio" [class.is-invalid]="numSocioNoValido" class="form-control" >
+    <small  *ngIf="numSocioNoValido" class="text-danger">El número de abonados tiene que tener mínimo 4 números y como máximo 7</small>
+  </div>
+
+  <div class="form-group">
+    <button class="btn btn-primary m-2 black-btn" (click)="actualizarEstado()">Actualizar estado</button>
+  </div>
+  <div>    
+    <input type="button" class="btn btn-primary m-2 black-btn" (click)="volver()" name="Volver" value="Volver">
+  </div>
+
+</form>
+
+</html>

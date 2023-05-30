@@ -1,0 +1,12 @@
+<br/>
+<br/>
+<br/>
+<div class="container">
+  <h2>Eliminar Cuenta</h2>
+  <div class="usuario-container" *ngFor="let usuario of listaUsuarios">
+    <h3>{{ usuario.data.nombre }}</h3>
+    <p>{{ usuario.data.correo }}</p>
+    <button (click)="borrarUsuario()">Borrar Usuario</button>
+  </div>
+  <button class="volver-button" (click)="volver()">Volver al Main</button>
+</div>

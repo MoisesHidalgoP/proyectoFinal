@@ -1,0 +1,66 @@
+<form [formGroup]="formReg" (ngSubmit)="onSubmit()" class="bg-light d-flex justify-content-center align-items-center vh-100" >
+        <div
+          class="bg-white p-5 rounded-5 text-secondary shadow"
+          style="width: 25rem"
+        >
+          <div class="d-flex justify-content-center">
+            <img
+              src="/assets/usuario.png"
+              alt="login-icon"
+              style="height: 7rem"
+            />
+          </div>
+          <div class="text-center fs-1 fw-bold">Register</div>
+          <div class="input-group mt-4">
+            <div class="input-group-text bg-light">
+              <img
+                src="/assets/correo.png"
+                alt="candado"
+                style="height: 1rem"
+              />
+            </div>
+            <div>
+              <input type="text" class="form-control" formControlName="email" placeholder="Email" [class.is-invalid]="correoNoValido">
+              <small *ngIf="correoNoValido" class="text-danger">El campo email tiene que tener mínimo 5 letras y como máximo 50.
+                Tambien tiene que tener formato email.
+              </small>
+            </div> 
+          </div>
+          <div class="input-group mt-1">
+            <div class="input-group-text bg-light">
+              <img
+                src="/assets/candado.png"
+                alt="candado.png"
+                style="height: 1rem"
+              />
+            </div>
+            <div>
+              <input type="password" class="form-control" formControlName="password" placeholder="Password" [class.is-invalid]="passwordNoValido">
+              <small *ngIf="passwordNoValido" class="text-danger">El campo contraseña es obligatorio.
+              </small>
+            </div>
+          </div>
+          <br/> 
+          <div>
+            <input type="text" class="form-control" formControlName="nombreCompleto" placeholder="Nombre completo" [class.is-invalid]="nombreNoValido">
+            <small *ngIf="nombreNoValido" class="text-danger">El nombre tiene que tener mínimo 5 letras y como máximo 50.
+              Este campo tampoco admite números ni carácteres raros.
+            </small>
+          </div>
+          <div>
+            <input type="number" class="form-control" formControlName="movil" placeholder="Movil" [class.is-invalid]="movilNoValido">
+            <small *ngIf="movilNoValido" class="text-danger">El campo móvil tiene que tener 9 dígitos
+            </small>
+          </div>
+         
+          <br/>
+            <button type="submit" class="btn btn-secondary btn-sm">Enviar</button>
+            <br/>
+            <br/>
+            <button type="submit" class="btn btn-secondary btn-sm" a routerLink="/login" value="Enviar">Volver al login</button>
+          </div>
+      </form>
+
+      
+
+

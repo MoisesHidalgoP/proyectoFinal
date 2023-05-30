@@ -1,0 +1,31 @@
+<div *ngIf="+rol===0" class="container">
+    <h1 class="title">Listado de usuarios</h1>
+    <div class="button-container">    
+      <button class="btn btn-primary" (click)="volver()">Volver</button>
+    </div>
+    <ul *ngFor="let usuario of listaUsuarios" class="user-list">
+      <li class="user-item">
+        <div class="user-details">
+          <span class="user-label">Nombre:</span> {{usuario.data.nombreCompleto}}
+          <br/>
+          <span class="user-label">Email:</span> {{usuario.data.email}}
+          <br/>
+          <span class="user-label">Teléfono:</span> {{usuario.data.movil}}
+          <br/>
+          <span class="user-label">Rol:</span> {{usuario.data.rol}}
+        </div>
+        <div class="user-actions">
+         
+          <button (click)="editarUsuario(usuario.id)" class="btn btn-secondary">Editar usuario</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+  
+  <div *ngIf="+rol == 1" class="container">
+    <div class="alert alert-danger">
+      <p>Usted no tiene permisos para entrar en esta funcionalidad. Disculpe las molestias.</p>
+      <button class="btn btn-primary" (click)="volver()">Volver</button>
+    </div>
+  </div>
+  
