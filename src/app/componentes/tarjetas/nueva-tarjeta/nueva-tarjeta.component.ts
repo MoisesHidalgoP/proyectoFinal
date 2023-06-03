@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AsistenciasService } from 'src/app/servicios/asistencias.service';
 import { LogsService } from 'src/app/servicios/logs.service';
 import { TarjetasService } from 'src/app/servicios/tarjetas.service';
+import { UsuariosService } from 'src/app/servicios/usuarios.service';
 
 @Component({
   selector: 'app-nueva-tarjeta',
@@ -17,6 +18,7 @@ export class NuevaTarjetaComponent implements OnInit {
   coleccion:any;
   nueva: boolean = false;
   dataAsistente: any;
+  rol!:string;
 
 
   constructor(private fb: FormBuilder,
@@ -24,7 +26,8 @@ export class NuevaTarjetaComponent implements OnInit {
     private tarjetasService: TarjetasService,
     private ruta: ActivatedRoute,
     private router: Router,
-    private logService : LogsService) 
+    private logService : LogsService,
+    private usuarioService: UsuariosService) 
     {
       //Formulario
   this.datosTarjeta = this.fb.group({
@@ -39,6 +42,8 @@ export class NuevaTarjetaComponent implements OnInit {
      }
 
   ngOnInit(): void {
+
+    this.rol = localStorage.getItem('rol') || this.usuarioService.rol;
      
     this.logService.addLog("Entramos en el formulario crear nuevo jugador con tarjeta","Estamos en el componente tarjetas");
 

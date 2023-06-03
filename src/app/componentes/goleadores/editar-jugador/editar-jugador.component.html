@@ -1,7 +1,7 @@
 <br/>
 <br/>
-<html>
-    <div class="form-container">
+
+    <div *ngIf="+rol===0" class="form-container">
         <h1 class="form-title">Editar nuevo jugador para la tabla de goleadores</h1>
         <form [formGroup]="datosJugador" class="form">
           <div class="form-group">
@@ -14,7 +14,29 @@
     
           <div class="form-group">
             <label for="equipo" class="form-label">Equipo:</label>
-            <input type="text" id="equipo" formControlName="equipo" [class.is-invalid]="equipoNoValido" class="form-control">
+            <select id="equipo" formControlName="equipo" [class.is-invalid]="equipoNoValido" class="form-control">
+              <option value="">Seleccionar equipo</option>
+              <option value="Real Club Celta de Vigo">Real Club Celta de Vigo</option>
+              <option value="Sevilla Fútbol Club">Sevilla Fútbol Club</option>
+              <option value="Valencia Club de Fútbol">Valencia Club de Fútbol</option>
+              <option value="Villarreal Club de Fútbol">Villarreal Club de Fútbol</option>
+              <option value="Real Sociedad de Fútbol">Real Sociedad de Fútbol</option>
+              <option value="Futbol Club Barcelona">Futbol Club Barcelona</option>
+              <option value="Real Betis Balompié">Real Betis Balompié</option>
+              <option value="Mallorca Club de Fútbol">Mallorca Club de Fútbol</option>
+              <option value="Real Valladolid Club de Fútbol">Real Valladolid Club de Fútbol</option>
+              <option value="Club Atlético de Madrid">Club Atlético de Madrid</option>
+              <option value="Cádiz Club de Fútbol">Cádiz Club de Fútbol</option>
+              <option value="Girona Club de Fútbol">Girona Club de Fútbol</option>
+              <option value="RCD Espanyol de Barcelona">RCD Espanyol de Barcelona</option>
+              <option value="Real Madrid Club de Fútbol">Real Madrid Club de Fútbol</option>
+              <option value="Osasuna Club de Fútbol">Osasuna Club de Fútbol</option>
+              <option value="Getafe Club de Fútbol">Getafe Club de Fútbol</option>
+              <option value="Athletic Club">Athletic Club</option>
+              <option value="Elche Club de Fútbol">Elche Club de Fútbol</option>
+              <option value="Unión Deportiva Almería">Unión Deportiva Almería</option>
+              <option value="Rayo Vallecano de Madrid">Rayo Vallecano de Madrid</option>
+            </select>
             <small *ngIf="equipoNoValido" class="form-error">El nombre del equipo tiene que tener 5 letras y 40 como máximo.
               Este campo tampoco admite números ni carácteres raros.
             </small>
@@ -48,4 +70,12 @@
           </div>
         </form>
       </div>
-    </html>
+
+      
+<div *ngIf="+rol == 1" class="container">
+  <div class="alert alert-danger">
+    <p>Usted no tiene permisos para entrar en esta funcionalidad. Disculpe las molestias.</p>
+    <button class="btn btn-primary" a routerLink="/main">Volver</button>
+  </div>
+</div>
+   

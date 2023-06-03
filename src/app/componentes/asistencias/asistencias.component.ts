@@ -62,7 +62,7 @@ export class AsistenciasComponent implements OnInit {
 
 
   editarAsistente(documentId: string) {
-    this.router.navigate(['/editarAsistente', documentId]);
+    this.router.navigate(['/asistencias/editarAsistente', documentId]);
     console.log(documentId);
   }
 

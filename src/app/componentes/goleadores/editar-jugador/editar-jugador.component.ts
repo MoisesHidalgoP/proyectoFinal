@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GoleadoresService } from 'src/app/servicios/goleadores.service';
 import { LogsService } from 'src/app/servicios/logs.service';
+import { UsuariosService } from 'src/app/servicios/usuarios.service';
 
 @Component({
   selector: 'app-editar-jugador',
@@ -17,13 +18,15 @@ export class EditarJugadorComponent implements OnInit {
   coleccion:any;
   nueva: boolean = false;
   dataJugador: any;
+  rol!:string;
 
   constructor(private fb: FormBuilder,
     private location: Location,
     private goleadorService: GoleadoresService,
     private ruta: ActivatedRoute,
     private router: Router,
-    private logService: LogsService) 
+    private logService: LogsService,
+    private usuarioService: UsuariosService) 
     { 
       //Formulario
   this.datosJugador = this.fb.group({
@@ -38,6 +41,7 @@ export class EditarJugadorComponent implements OnInit {
     }
 
   ngOnInit(): void {
+    this.rol = localStorage.getItem('rol') || this.usuarioService.rol;
     this.logService.addLog("Entramos el formulario editar goleadoar","Estamos en el componente goleadores");
     this.ruta.params.subscribe( params => {
       if(params['id']){

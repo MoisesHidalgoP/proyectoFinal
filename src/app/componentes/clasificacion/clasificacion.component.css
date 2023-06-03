@@ -76,4 +76,11 @@ body {
     color: #333;
     cursor: pointer;
   }
+  .editar{
+    background-color: #000000; color: white; font-size: 16px; border: none; padding: 5px 10px; cursor: pointer; border-radius: 5px; margin-right: 20px;
+
+}
+.borrar{
+    background-color: #000000; color: white; font-size: 16px; border: none; padding: 5px 10px; cursor: pointer; border-radius: 5px;
+}
   

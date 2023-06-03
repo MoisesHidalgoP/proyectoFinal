@@ -17,6 +17,7 @@ export class EditarUsuarioComponent implements OnInit {
   nueva: boolean = false;
   dataUsuario: any;
   datosUsuario: FormGroup;
+  rol!:string;
  
 
   constructor( private fb: FormBuilder,
@@ -24,7 +25,8 @@ export class EditarUsuarioComponent implements OnInit {
     private usuarioService: UsuariosService,
     private ruta: ActivatedRoute,
     private router: Router,
-    private logService: LogsService) 
+    private logService: LogsService,
+    ) 
     { 
       this.datosUsuario = this.fb.group({
         email: [{ value: '', disabled: true }, Validators.required],
@@ -36,6 +38,8 @@ export class EditarUsuarioComponent implements OnInit {
     
 
   ngOnInit(): void {
+
+    this.rol = localStorage.getItem('rol') || this.usuarioService.rol;
     
     this.logService.addLog("Entramos en el formulario editar un usuario","Estamos en el componente usuarios");
 
@@ -44,7 +48,7 @@ export class EditarUsuarioComponent implements OnInit {
         this.documentId = String(params['id']);
         this.nueva = false;
         console.log('editar');
-        // mostrar la incidencia en el formulario
+       
         this.usuarioService.getUsuario(this.documentId).subscribe(
           (resp: any) => {
             this.datosUsuario.patchValue(resp.payload.data());
@@ -84,7 +88,7 @@ export class EditarUsuarioComponent implements OnInit {
         const email = emailControl.value;
         
         if (email === 'moihidalgop99@gmail.com' && this.dataUsuario.rol !== '') {
-          alert("No se puede cambiar el rol para el email moihidalgop99@gmail.com porque es el creador de la aplicación web.");
+          alert("No se puede cambiar los datos para el email moihidalgop99@gmail.com porque es el creador de la aplicación web.");
           return;
         }
       }

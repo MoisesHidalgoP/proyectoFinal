@@ -5,6 +5,7 @@ import { EquiposComponent } from './equipos.component';
 import { DetalleEquipoComponent } from './detalle-equipo/detalle-equipo.component';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditarEquipoComponent } from './editar-equipo/editar-equipo.component';
+import { AppRoutingModule } from 'src/app/app-routing.module';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { EditarEquipoComponent } from './editar-equipo/editar-equipo.component';
     EquiposRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+    
     
   ]
 })

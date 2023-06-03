@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LogsService } from 'src/app/servicios/logs.service';
 import { TarjetasService } from 'src/app/servicios/tarjetas.service';
+import { UsuariosService } from 'src/app/servicios/usuarios.service';
 
 @Component({
   selector: 'app-editar-tarjeta',
@@ -16,13 +17,15 @@ export class EditarTarjetaComponent implements OnInit {
   coleccion:any;
   nueva: boolean = false;
   dataTarjeta: any;
+  rol!:string;
 
   constructor(private fb: FormBuilder,
     private location: Location,
     private tarjetasService: TarjetasService,
     private ruta: ActivatedRoute,
     private router: Router,
-    private logService : LogsService) 
+    private logService : LogsService,
+    private usuarioService: UsuariosService) 
     { 
        //Formulario
   this.datosTarjeta = this.fb.group({
@@ -37,6 +40,7 @@ export class EditarTarjetaComponent implements OnInit {
     }
 
   ngOnInit(): void {
+    this.rol = localStorage.getItem('rol') || this.usuarioService.rol;
     this.logService.addLog("Entramos en el formulario editar jugador con tarjeta","Estamos en el componente tarjetas");
     this.ruta.params.subscribe( params => {
       if(params['id']){

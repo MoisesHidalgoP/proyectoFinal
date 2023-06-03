@@ -17,6 +17,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EnviarEmailComponent } from './componentes/enviar-email/enviar-email.component';
 import { EliminarCuentaComponent } from './componentes/eliminar-cuenta/eliminar-cuenta.component';
 import { RecuperarPasswordComponent } from './componentes/recuperar-password/recuperar-password.component';
+import { EquiposRoutingModule } from './componentes/equipos/equipos-routing.module';
+import { ClasificacionRoutingModule } from './componentes/clasificacion/clasificacion-routing.module';
+import { GoleadoresRoutingModule } from './componentes/goleadores/goleadores-routing.module';
+import { AsistenciasRoutingModule } from './componentes/asistencias/asistencias-routing.module';
+import { TarjetasRoutingModule } from './componentes/tarjetas/tarjetas-routing.module';
+import { UsuariosRoutingModule } from './componentes/usuarios/usuarios-routing.module';
 
 
 
@@ -48,6 +54,12 @@ import { RecuperarPasswordComponent } from './componentes/recuperar-password/rec
     NgbModule,
     ReactiveFormsModule,
     FormsModule,
+    EquiposRoutingModule,
+    ClasificacionRoutingModule,
+    GoleadoresRoutingModule,
+    AsistenciasRoutingModule,
+    TarjetasRoutingModule,
+    UsuariosRoutingModule
     
     
     

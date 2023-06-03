@@ -55,6 +55,7 @@
 
     .text-center {
         text-align: center;
+        background-color: red;
       }
       
       .heading-container {
@@ -74,3 +75,12 @@
    html{
     background-color: grey;
    }  
+   .container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+  }
+  .container1{
+    background-color: red;
+  }

@@ -84,7 +84,7 @@ export class EquiposComponent implements OnInit {
 
   editarEquipo(documentId: string) {
   
-    this.router.navigate(['/editarEquipo', documentId]);
+    this.router.navigate(['/equipos/editarEquipo', documentId]);
   }
 
   cancel() {

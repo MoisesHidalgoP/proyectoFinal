@@ -1,7 +1,7 @@
-<body>
+
     <p class="parrafo-estilizado">Clasificación</p>
    
-    <button *ngIf="+rol===0" class="back-btn" a routerLink="/crearNuevoEquipo" >Crear nuevo equipo</button>
+    <button *ngIf="+rol===0" class="back-btn" a routerLink="/clasificacion/crearNuevoEquipo" >Crear nuevo equipo</button>
     <br/>
     <br/>
     <button class="back-btn" (click)="volver()">Volver atrás</button>
@@ -19,8 +19,8 @@
         <span class="lost-matches" title="Partidos perdidos">PP: {{clasificacion.data.partidosPerdidos}}</span>
         <span class="goals-for" title="Goles a favor">GF: {{clasificacion.data.golesFavor}}</span>
         <span class="goals-against" title="Goles en contra">GC: {{clasificacion.data.golesContra}}</span>
-        <button *ngIf="+rol===0" (click)="editarClasificado(clasificacion.id)"  style="background-color: #000000; color: white; font-size: 16px; border: none; padding: 5px 10px; cursor: pointer; border-radius: 5px; margin-right: 10px;">Editar equipo</button>
-        <button *ngIf="+rol===0" (click)="borrarClasificado(clasificacion.id)"  style="background-color: #000000; color: white; font-size: 16px; border: none; padding: 5px 10px; cursor: pointer; border-radius: 5px; margin-left: 10px;">Borrar equipo</button>
+        <button class="editar" *ngIf="+rol===0" (click)="editarClasificado(clasificacion.id)"  >Editar equipo</button>
+        <button class="borrar" *ngIf="+rol===0" (click)="borrarClasificado(clasificacion.id)"  >Borrar equipo</button>
       </li>
     </ul>
-  </body>
+  

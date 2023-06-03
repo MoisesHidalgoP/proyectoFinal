@@ -70,6 +70,7 @@
     .black-btn {
       background-color: black;
       color: white;
+      background-color: #000000; color: white; font-size: 16px; border: none; padding: 10px 20px; cursor: pointer; border-radius: 5px;
     }
  html{
   background-color: grey;

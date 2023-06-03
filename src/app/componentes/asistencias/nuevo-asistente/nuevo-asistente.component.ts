@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AsistenciasService } from 'src/app/servicios/asistencias.service';
 import { LogsService } from 'src/app/servicios/logs.service';
+import { UsuariosService } from 'src/app/servicios/usuarios.service';
 
 @Component({
   selector: 'app-nuevo-asistente',
@@ -16,13 +17,15 @@ export class NuevoAsistenteComponent implements OnInit {
   coleccion:any;
   nueva: boolean = false;
   dataAsistente: any;
+  rol!:string;
 
   constructor(private fb: FormBuilder,
     private location: Location,
     private asistenciaService: AsistenciasService,
     private ruta: ActivatedRoute,
     private router: Router,
-    private logService: LogsService)
+    private logService: LogsService,
+    private usuarioService:UsuariosService)
      {
       //Formulario
   this.datosAsistente = this.fb.group({
@@ -37,6 +40,7 @@ export class NuevoAsistenteComponent implements OnInit {
      }
 
   ngOnInit(): void {
+    this.rol = localStorage.getItem('rol') || this.usuarioService.rol;
     this.logService.addLog("Entramos en el formulario crear nuevo asistente","Estamos en el componente asistencias");
     console.log('hola soy formulario de asistencias');
     this.ruta.params.subscribe( params => {
@@ -44,7 +48,7 @@ export class NuevoAsistenteComponent implements OnInit {
         this.documentId = String(params['id']);
         this.nueva = false;
         console.log('editar');
-        // mostrar la incidencia en el formulario
+        // mostrar la asistencia en el formulario
         this.asistenciaService.conexion(this.documentId).subscribe(
           (resp: any) => {
             this.datosAsistente.setValue(resp.payload.data());

@@ -1,6 +1,5 @@
-<html>
-<br/>
-<div class="container">
+<div *ngIf="+rol===0" class="container">
+  <br/>
   <div class="box">
     <div class="text-center">
       <h1>Editar usuario</h1>
@@ -50,5 +49,10 @@
   </div>
 </div>
 
-</html>
+<div *ngIf="+rol == 1" class="container">
+  <div class="alert alert-danger">
+    <p>Usted no tiene permisos para entrar en esta funcionalidad. Disculpe las molestias.</p>
+    <button class="btn btn-primary" a routerLink="/main">Volver</button>
+  </div>
+</div>
 

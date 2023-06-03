@@ -62,7 +62,7 @@ export class ClasificacionComponent implements OnInit {
 
 
   editarClasificado(documentId: string) {
-    this.router.navigate(['/editarClasificacion', documentId]);
+    this.router.navigate(['/clasificacion/editarClasificacion', documentId]);
   }
 
   cancel() {

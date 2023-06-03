@@ -1,7 +1,5 @@
-<html>
-    <body>
+        <div class="central">
         <br/>
-       
         <p class="parrafo-estilizado">Datos de los equipos de la temporada 2022/2023</p>
         <form (submit)="buscar()">
             <input type="text" [(ngModel)]="nombreBusqueda" name="nombreBusqueda" placeholder="Buscar por nombre">
@@ -20,10 +18,10 @@
             <p>Número de socios: {{equipo.data.numSocio}}</p>
           </div>          
         <br/>
-        <button (click)="volver()" style="background-color: #000000; color: white; font-size: 16px; border: none; padding: 10px 20px; cursor: pointer; border-radius: 5px;">Volver</button>
+        <button class="volver" (click)="volver()" >Volver</button>
         <br/>
         <br/>
-        <button *ngIf="+rol===0" type="submit" style="background-color: #000000; color: white; font-size: 16px; border: none; padding: 10px 20px; cursor: pointer; border-radius: 5px;" a routerLink="/detallEquipo" value="Enviar">Crear nuevo equipo</button>
+        <button class="crear" *ngIf="+rol===0"  a routerLink="/equipos/detallEquipo" value="Enviar">Crear nuevo equipo</button>
         <br/>
         <br/>
         <ul *ngFor="let equipo of listaEquipos" class="list-group horizontal-list"  >
@@ -33,7 +31,7 @@
                 <li  class="list-group-item inline-item"  >
                     <img
                     src="{{equipo.data.img}}"
-                    alt="barca.png"
+                    
                     style="height: 10rem"
                   />
                    
@@ -49,18 +47,16 @@
                     Número de socios: {{equipo.data.numSocio}}
                     <br/>
                     <br/>
-                    <button *ngIf="+rol===0" (click)="borrarEquipo(equipo.id)"  style="background-color: #000000; color: white; font-size: 16px; border: none; padding: 10px 20px; cursor: pointer; border-radius: 5px;">Borrar equipo</button>
+                    <button class="borrar" *ngIf="+rol===0" (click)="borrarEquipo(equipo.id)" >Borrar equipo</button>
                     <br/>
                     <br/>
-                    <button *ngIf="+rol===0" (click)="editarEquipo(equipo.id)"  style="background-color: #000000; color: white; font-size: 16px; border: none; padding: 10px 20px; cursor: pointer; border-radius: 5px;">Editar equipo</button>
+                    <button class="editar" *ngIf="+rol===0" (click)="editarEquipo(equipo.id)" >Editar equipo</button>
        
                 </li>
             </div>
         </ul>
+      </div>
 
 
        
-    </body>
-    
-</html>
-
+  

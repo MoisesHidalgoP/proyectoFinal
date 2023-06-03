@@ -63,7 +63,7 @@ export class TarjetasComponent implements OnInit {
 
 
   editarTarjeta(documentId: string) {
-    this.router.navigate(['/editarTarjeta', documentId]);
+    this.router.navigate(['/tarjetas/editarTarjeta', documentId]);
     console.log(documentId);
   }
 

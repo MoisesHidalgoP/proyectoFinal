@@ -62,7 +62,7 @@ export class GoleadoresComponent implements OnInit {
 
 
   editarGoleador(documentId: string) {
-    this.router.navigate(['/editarGoleador', documentId]);
+    this.router.navigate(['/goleadores/editarGoleador', documentId]);
     console.log(documentId);
   }
 

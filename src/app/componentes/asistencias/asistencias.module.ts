@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { AsistenciasRoutingModule } from './asistencias-routing.module';
 import { AsistenciasComponent } from './asistencias.component';
 import { NuevoAsistenteComponent } from './nuevo-asistente/nuevo-asistente.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditarAsistenteComponent } from './editar-asistente/editar-asistente.component';
 
 
@@ -17,7 +17,8 @@ import { EditarAsistenteComponent } from './editar-asistente/editar-asistente.co
   imports: [
     CommonModule,
     AsistenciasRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class AsistenciasModule { }

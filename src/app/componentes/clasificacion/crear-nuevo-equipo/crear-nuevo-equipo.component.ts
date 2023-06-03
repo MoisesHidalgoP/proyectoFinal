@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClasificacionService } from 'src/app/servicios/clasificacion.service';
 import { LogsService } from 'src/app/servicios/logs.service';
+import { UsuariosService } from 'src/app/servicios/usuarios.service';
 
 @Component({
   selector: 'app-crear-nuevo-equipo',
@@ -18,13 +19,15 @@ export class CrearNuevoEquipoComponent implements OnInit {
   coleccion:any;
   nueva: boolean = false;
   dataClasificacion: any;
+  rol!:string;
 
   constructor(private fb: FormBuilder,
     private location: Location,
     private clasificacionService: ClasificacionService,
     private ruta: ActivatedRoute,
     private router: Router,
-    private logService:LogsService) {
+    private logService:LogsService,
+    private usuarioService:UsuariosService) {
           //Formulario
   this.datosClasificacion = this.fb.group({
     nombre: ['', [Validators.required , Validators.minLength(5) , Validators.maxLength(40) , Validators.pattern(/^[a-zA-Z\s\u00C0-\u017F]*$/)]],
@@ -41,6 +44,7 @@ export class CrearNuevoEquipoComponent implements OnInit {
      }
 
   ngOnInit(): void {
+    this.rol = localStorage.getItem('rol') || this.usuarioService.rol;
     this.logService.addLog("Entramos en el formulario crear clasificiado","Estamos en el componente clasificacion");
     console.log('hola soy formulario de equipo');
     this.ruta.params.subscribe( params => {

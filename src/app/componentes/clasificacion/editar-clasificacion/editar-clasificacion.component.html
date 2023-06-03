@@ -1,4 +1,4 @@
-<html>
+<div *ngIf="+rol===0">
 <br/>
 <div class="text-center">
   <h1>Editar equipo</h1>
@@ -71,5 +71,13 @@
   </div>
 
 </form>
+</div>
 
-</html>
+<div *ngIf="+rol == 1" class="container">
+  <br/>
+  <br/>
+  <div class="alert alert-danger">
+    <p>Usted no tiene permisos para entrar en esta funcionalidad. Disculpe las molestias.</p>
+    <button class="btn btn-primary" a routerLink="/main">Volver</button>
+  </div>
+</div>

@@ -1,9 +1,10 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { EquiposService } from 'src/app/servicios/equipos.service';
 import { LogsService } from 'src/app/servicios/logs.service';
+import { UsuariosService } from 'src/app/servicios/usuarios.service';
 
 @Component({
   selector: 'app-detalle-equipo',
@@ -18,13 +19,16 @@ export class DetalleEquipoComponent implements OnInit {
   documentId: any;
   coleccion:any;
   equipo: any;
+  rol!:string;
 
   constructor(
     private fb: FormBuilder,
     private location: Location,
     private equipoService: EquiposService,
     private ruta: ActivatedRoute,
-    private logService: LogsService
+    private logService: LogsService,
+    private usuarioService: UsuariosService,
+    private router:Router
   ) {
 
      //Formulario
@@ -39,6 +43,7 @@ export class DetalleEquipoComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.rol = localStorage.getItem('rol') || this.usuarioService.rol;
     this.logService.addLog("Entramos en crear equipo","Estamos en el componente crear equipos");
     console.log('hola soy formulario de equipo');
     this.ruta.params.subscribe( params => {
@@ -116,6 +121,9 @@ export class DetalleEquipoComponent implements OnInit {
     
     cancel() {
       this.location.back();
+    }
+    volver(){
+      this.router.navigate(['/equipos']);
     }
 
 

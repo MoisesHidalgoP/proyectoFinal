@@ -3,7 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AsistenciasService } from 'src/app/servicios/asistencias.service';
+import { EquiposService } from 'src/app/servicios/equipos.service';
 import { LogsService } from 'src/app/servicios/logs.service';
+import { UsuariosService } from 'src/app/servicios/usuarios.service';
 
 @Component({
   selector: 'app-editar-asistente',
@@ -11,18 +13,23 @@ import { LogsService } from 'src/app/servicios/logs.service';
   styleUrls: ['./editar-asistente.component.css']
 })
 export class EditarAsistenteComponent implements OnInit {
+  selectedOption!: string;
   datosAsistente!:FormGroup;
   documentId: any;
   coleccion:any;
   nueva: boolean = false;
   dataAsistente: any;
+  rol!:string;
+  listaEquipos: any[] = [];
 
   constructor(private fb: FormBuilder,
     private location: Location,
     private asistenciaService: AsistenciasService,
     private ruta: ActivatedRoute,
     private router: Router,
-    private logService: LogsService) 
+    private logService: LogsService,
+    private usuarioService:UsuariosService,
+    private equipoService: EquiposService) 
     {
         //Formulario
   this.datosAsistente = this.fb.group({
@@ -37,6 +44,7 @@ export class EditarAsistenteComponent implements OnInit {
      }
 
   ngOnInit(): void {
+    this.rol = localStorage.getItem('rol') || this.usuarioService.rol;
     this.logService.addLog("Entramos en el formulario de editar asistente","Estamos en el componente asistencias");
 
     this.ruta.params.subscribe( params => {
@@ -57,6 +65,22 @@ export class EditarAsistenteComponent implements OnInit {
     })
   }
 
+  getAll(){
+    
+    this.logService.addLog("Se entra en el metodo getAll" , "Estamos en el componente equipos"); 
+    
+   
+    this.equipoService.getAll().subscribe((incidenciasSnapshot: any) => {
+      incidenciasSnapshot.forEach((incidenciaData:any) => {
+
+        this.listaEquipos.push({
+          id: incidenciaData.payload.doc.id, 
+          data: incidenciaData.payload.doc.data()
+        });
+        
+      });
+    })
+  }
 
 
   get nombreNoValido(){

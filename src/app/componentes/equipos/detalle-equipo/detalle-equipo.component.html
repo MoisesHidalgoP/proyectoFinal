@@ -1,17 +1,39 @@
-<html>
-  <br/>
+<div *ngIf="+rol===0">
+<br/>
 <h1 class="h1" style="text-align: center;">Nuevo equipo</h1>
 
 <div class="container" >
     <form [formGroup]="datosEquipo" class="form-group container w-50 mt-3" >
       <div class="form-group">
-        <label for="nombre">Nombre</label>
-        <input type="text" class="form-control"  formControlName="nombre" [class.is-invalid]="nombreNoValido" placeholder="Nombre">
+        <label for="nombre" class="form-label">Nombre:</label>
+        <select id="nombre" formControlName="nombre" [class.is-invalid]="nombreNoValido" class="form-control">
+          <option value="">Seleccione un nombre</option>
+          <option value="Real Club Celta de Vigo">Real Club Celta de Vigo</option>
+          <option value="Sevilla Fútbol Club">Sevilla Fútbol Club</option>
+          <option value="Valencia Club de Fútbol">Valencia Club de Fútbol</option>
+          <option value="Villarreal Club de Fútbol">Villarreal Club de Fútbol</option>
+          <option value="Real Sociedad de Fútbol">Real Sociedad de Fútbol</option>
+          <option value="Fútbol Club Barcelona">Fútbol Club Barcelona</option>
+          <option value="Real Betis Balompié">Real Betis Balompié</option>
+          <option value="Mallorca Club de Fútbol">Mallorca Club de Fútbol</option>
+          <option value="Real Valladolid Club de Fútbol">Real Valladolid Club de Fútbol</option>
+          <option value="Club Atlético de Madrid">Club Atlético de Madrid</option>
+          <option value="Cádiz Club de Fútbol">Cádiz Club de Fútbol</option>
+          <option value="Girona Club de Fútbol">Girona Club de Fútbol</option>
+          <option value="RCD Espanyol de Barcelona">RCD Espanyol de Barcelona</option>
+          <option value="Real Madrid Club de Fútbol">Real Madrid Club de Fútbol</option>
+          <option value="Osasuna Club de Fútbol">Osasuna Club de Fútbol</option>
+          <option value="Getafe Club de Fútbol">Getafe Club de Fútbol</option>
+          <option value="Athletic Club">Athletic Club</option>
+          <option value="Elche Club de Fútbol">Elche Club de Fútbol</option>
+          <option value="Unión Deportiva Almería">Unión Deportiva Almería</option>
+          <option value="Rayo Vallecano de Madrid">Rayo Vallecano de Madrid</option>
+        </select>
         <small *ngIf="nombreNoValido" class="text-danger">El nombre tiene que tener mínimo 5 letras y como máximo 40.
-          Este campo tampoco admite números ni carácteres raros.
+          Este campo tampoco admite números ni caracteres raros.
         </small>
-        
       </div>
+      
 
       <br/>
 
@@ -61,12 +83,12 @@
         <button
         class="btn btn-primary m-2" 
         (click)="guardar()"
-        style="background-color: #000000; color: white; font-size: 16px; border: none; padding: 10px 20px; cursor: pointer; border-radius: 5px;"
+        
         
       >
         Enviar
       </button>
-      <input type="button" style="background-color: #000000; color: white; font-size: 16px; border: none; padding: 10px 20px; cursor: pointer; border-radius: 5px;" class="btn btn-primary m-2" onclick="history.back()" name="Volver" value="Volver">
+      <input type="button"  class="btn btn-primary m-2" onclick="history.back()" name="Volver" value="Volver">
       
       </div>
       <div>
@@ -77,4 +99,13 @@
       
     </form>
   </div>
-  </html>
+</div>
+
+<div *ngIf="+rol == 1" class="container">
+  <br/>
+  <br/>
+  <div class="alert alert-danger">
+    <p>Usted no tiene permisos para entrar en esta funcionalidad. Disculpe las molestias.</p>
+    <button class="btn btn-primary" a routerLink="/main">Volver</button>
+  </div>
+</div>

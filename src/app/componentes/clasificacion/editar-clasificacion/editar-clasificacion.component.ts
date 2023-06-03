@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClasificacionService } from 'src/app/servicios/clasificacion.service';
 import { LogsService } from 'src/app/servicios/logs.service';
+import { UsuariosService } from 'src/app/servicios/usuarios.service';
 
 @Component({
   selector: 'app-editar-clasificacion',
@@ -18,16 +19,18 @@ export class EditarClasificacionComponent implements OnInit {
   coleccion:any;
   nueva: boolean = false;
   dataClasificacion: any;
+  rol!:string;
 
   constructor( private fb: FormBuilder,
     private location: Location,
     private clasificacionService: ClasificacionService,
     private ruta: ActivatedRoute,
     private router: Router,
-    private logService : LogsService) { 
+    private logService : LogsService,
+    private usuarioService:UsuariosService) { 
 
       this.datosClasificacion = this.fb.group({
-        nombre: ['', [Validators.required , Validators.minLength(5) , Validators.maxLength(40) , Validators.pattern(/^[a-zA-Z\s\u00C0-\u017F]*$/)]],
+        nombre: [{ value: '', disabled: true }, [Validators.required , Validators.minLength(5) , Validators.maxLength(40) , Validators.pattern(/^[a-zA-Z\s\u00C0-\u017F]*$/)]],
         img: ['', [Validators.required , Validators.minLength(5) , Validators.maxLength(70) ]],
         partidosJugados: ['', [Validators.required , Validators.minLength(1) , Validators.pattern(/^[0-9]{1,3}$/) ]],
         partidosGanados: ['', [Validators.required , Validators.minLength(1) , Validators.pattern(/^(?=.*[1-9])[0-9]{1,3}$/)]],
@@ -41,6 +44,7 @@ export class EditarClasificacionComponent implements OnInit {
     }
 
   ngOnInit(): void {
+    this.rol = localStorage.getItem('rol') || this.usuarioService.rol;
     this.logService.addLog("Entramos en el formulario editar clasificacion","Estamos en el componente clasificacion");
 
     this.ruta.params.subscribe( params => {

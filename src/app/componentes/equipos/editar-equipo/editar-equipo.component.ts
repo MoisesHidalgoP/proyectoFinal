@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EquiposService } from 'src/app/servicios/equipos.service';
 import { LogsService } from 'src/app/servicios/logs.service';
+import { UsuariosService } from 'src/app/servicios/usuarios.service';
 
 @Component({
   selector: 'app-editar-equipo',
@@ -13,7 +14,7 @@ import { LogsService } from 'src/app/servicios/logs.service';
 export class EditarEquipoComponent implements OnInit {
 
   datosEquipo!:FormGroup;
-
+  rol!: string;
 
   documentId: any;
   coleccion:any;
@@ -26,11 +27,12 @@ export class EditarEquipoComponent implements OnInit {
     private equipoService: EquiposService,
     private ruta: ActivatedRoute,
     private router: Router,
-    private logService: LogsService
+    private logService: LogsService,
+    private usuarioService : UsuariosService
   ) {
      //Formulario
   this.datosEquipo = this.fb.group({
-    nombre: ['', [Validators.required , Validators.minLength(5) , Validators.maxLength(40), Validators.pattern(/^[a-zA-Z\s\u00C0-\u017F]*$/) ]],
+    nombre: [{ value: '', disabled: true }, [Validators.required , Validators.minLength(5) , Validators.maxLength(40), Validators.pattern(/^[a-zA-Z\s\u00C0-\u017F]*$/) ]],
     img: ['', [Validators.required , Validators.minLength(5) , Validators.maxLength(70) , ]],
     entrenador: ['', [Validators.required , Validators.minLength(5) ,  Validators.maxLength(40),  Validators.pattern(/^[a-zA-Z\s\u00C0-\u017F]*$/)]],
     estadio: ['', [Validators.required , Validators.minLength(5) ,  Validators.maxLength(40) ,  Validators.pattern(/^[a-zA-Z\s\u00C0-\u017F]*$/)]],
@@ -40,6 +42,7 @@ export class EditarEquipoComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.rol = localStorage.getItem('rol') || this.usuarioService.rol;
     this.logService.addLog("Entramos en editar un equipo","Estamos en el componente editar equipos");
 
     this.ruta.params.subscribe( params => {
