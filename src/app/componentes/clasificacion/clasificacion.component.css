@@ -83,4 +83,7 @@ body {
 .borrar{
     background-color: #000000; color: white; font-size: 16px; border: none; padding: 5px 10px; cursor: pointer; border-radius: 5px;
 }
+.contenedor{
+  margin: 20px;
+}
   

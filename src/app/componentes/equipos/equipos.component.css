@@ -21,6 +21,7 @@ ul.list-group.horizontal-list {
 .central {
     background-color: red;
     text-align: center;
+    
   }
 .parrafo-estilizado {
     font-size: 24px;
@@ -45,10 +46,12 @@ ul.list-group.horizontal-list {
     line-height: 1.5;
   }
 .editar{
-    background-color: #000000; color: white; font-size: 16px; border: none; padding: 5px 10px; cursor: pointer; border-radius: 5px; margin-right: 20px;
 
+  background-color: #000000; color: white; font-size: 16px; border: none; padding: 5px 10px; cursor: pointer; border-radius: 5px; margin-right: 20px;
+  margin: 5px;
 }
 .borrar{
+  
     background-color: #000000; color: white; font-size: 16px; border: none; padding: 5px 10px; cursor: pointer; border-radius: 5px;
 }
 .crear{

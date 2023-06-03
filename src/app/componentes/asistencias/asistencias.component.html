@@ -20,8 +20,8 @@
                 <span class="etiqueta">Edad:</span> {{ asistentes.data.edad }} |
                 <span class="etiqueta">Asistencias:</span> {{ asistentes.data.asistencia }}
                 <div class="botones-container">
-                    <button *ngIf="+rol===0" (click)="editarAsistente(asistentes.id)"  >Editar jugador</button>
-                    <button *ngIf="+rol===0" (click)="borrarAsistente(asistentes.id)" >Borrar jugador</button>
+                    <button class="editar" *ngIf="+rol===0" (click)="editarAsistente(asistentes.id)"  >Editar jugador</button>
+                    <button class="borrar" *ngIf="+rol===0" (click)="borrarAsistente(asistentes.id)" >Borrar jugador</button>
                 </div>
             </div>
         </li>

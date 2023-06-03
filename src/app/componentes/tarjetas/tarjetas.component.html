@@ -20,8 +20,8 @@
                 <span class="etiqueta">Tarjetas Rojas:</span> {{ tarjetas.data.tarjetasRojas }} |
                 <span class="etiqueta">Total Tarjetas:</span> {{ tarjetas.data.totalTarjetas }}
                 <div class="botones-container">
-                    <button *ngIf="+rol===0" (click)="editarTarjeta(tarjetas.id)" >Editar jugador</button>
-                    <button *ngIf="+rol===0" (click)="borrarTarjeta(tarjetas.id)" >Borrar jugador</button>
+                    <button class="editar" *ngIf="+rol===0" (click)="editarTarjeta(tarjetas.id)" >Editar jugador</button>
+                    <button class="borrar" *ngIf="+rol===0" (click)="borrarTarjeta(tarjetas.id)" >Borrar jugador</button>
                 </div>
             </div>
         </li>

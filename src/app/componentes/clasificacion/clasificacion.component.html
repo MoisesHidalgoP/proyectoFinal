@@ -1,4 +1,8 @@
-
+  
+  <div class="contenedor">
+    <br/>
+    
+  
     <p class="parrafo-estilizado">Clasificación</p>
    
     <button *ngIf="+rol===0" class="back-btn" a routerLink="/clasificacion/crearNuevoEquipo" >Crear nuevo equipo</button>
@@ -23,4 +27,5 @@
         <button class="borrar" *ngIf="+rol===0" (click)="borrarClasificado(clasificacion.id)"  >Borrar equipo</button>
       </li>
     </ul>
+  </div>
   
